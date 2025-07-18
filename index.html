@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="js/swiper-bundle.min.css">
+    <script src="js/swiper-bundle.min.js"></script>
+
+    <style>
+        .card {
+            position: relative;
+            width: 360px;
+            height: 480px;
+            perspective: 1000px;
+            /* 3D 효과 적용 */
+        }
+
+        .card-front,
+        .card-back {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            transition: transform 0.7s ease;
+
+            border: 1px solid #000;
+        }
+
+        .card-front {
+            transform: rotateY(0deg);
+            z-index: 2;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+
+            background: yellowgreen;
+        }
+
+        .card:hover .card-front {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        .card:hover .card-back {
+            transform: rotateY(360deg);
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper flip_swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="card">
+                    <div class="card-front">
+                        앞면
+                    </div>
+                    <div class="card-back">
+                        뒷면
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var flip_swiper = new Swiper(".flip_swiper", {
+            slidesPerView: 1,
+            grabCursor: true,
+            // navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev",
+            // },
+        });
+    </script>
+</body>
+
+</html>
